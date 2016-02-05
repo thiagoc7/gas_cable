@@ -1,6 +1,6 @@
 production:
   adapter: postgresql
-  url: postgres://rtwzputaehyuuj:Mby0ubBxq7q58_ECFTbDuiw2TK@ec2-54-83-0-187.compute-1.amazonaws.com:5432/da2pvaq8vga86i
+  url: <%= ENV['DATABASE_URL'] %>
 
 development:
   adapter: postgresql
