@@ -1,6 +1,6 @@
 production:
   adapter: postgresql
-  url: <%= ENV['DATABASE_URL'] %>
+  url: postgres://localhost/gas_cable_development
 
 development:
   adapter: postgresql
