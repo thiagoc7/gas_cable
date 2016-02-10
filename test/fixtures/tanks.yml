@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+oliv_gc:
+  gasoline: GC
+  station: oliveira
+  capacity: 15000
+  min: 5000
+  max: 17000
+
+outeiro_et:
+  gasoline: ET
+  station: outeiro
+  capacity: 15000
+  min: 15500
+  max: 3000

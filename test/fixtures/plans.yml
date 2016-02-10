@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+oliveira:
+  date: <%= Date.today - 1 %>
+  tank: oliv_gc
+  initial_volume: 10000
+  buy_volume: 5000
+  sell_volume: 2000
+  final_volume: 13000
+
+outeiro:
+  date: <%= Date.today -1 %>
+  tank: outeiro_et
+  initial_volume: 5000
+  buy_volume: 5000
+  sell_volume: 3000
+  final_volume: 7000

@@ -11,10 +11,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160205161011) do
+ActiveRecord::Schema.define(version: 20160210152731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "plans", force: :cascade do |t|
+    t.date     "date"
+    t.integer  "tank_id"
+    t.integer  "initial_volume", default: 0
+    t.integer  "buy_volume",     default: 0
+    t.integer  "sell_volume",    default: 0
+    t.integer  "final_volume"
+    t.boolean  "finished",       default: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.index ["tank_id"], name: "index_plans_on_tank_id", using: :btree
+  end
+
+  create_table "stations", force: :cascade do |t|
+    t.text     "name"
+    t.string   "strong_days"
+    t.string   "weak_days"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "tanks", force: :cascade do |t|
+    t.text     "gasoline"
+    t.integer  "station_id"
+    t.integer  "capacity"
+    t.integer  "min"
+    t.integer  "max"
+    t.text     "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["station_id"], name: "index_tanks_on_station_id", using: :btree
+  end
 
   create_table "tasks", force: :cascade do |t|
     t.date     "date"
@@ -23,4 +56,6 @@ ActiveRecord::Schema.define(version: 20160205161011) do
     t.datetime "updated_at",  null: false
   end
 
+  add_foreign_key "plans", "tanks"
+  add_foreign_key "tanks", "stations"
 end

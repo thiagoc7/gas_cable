@@ -20,8 +20,15 @@ group :development, :test do
   gem 'byebug'
 end
 
+group :test do
+  gem 'minitest-reporters'
+end
+
 group :development do
   gem 'web-console', '~> 3.0'
+  gem 'spring'
+  gem 'guard' # NOTE: this is necessary in newer versions
+  gem 'guard-minitest'
 end
 
 group :production do
