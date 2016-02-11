@@ -11,6 +11,10 @@ class Plan < ApplicationRecord
     where(date: date, tank: tank).first
   end
 
+  def self.in_range(initial_date, final_date)
+    where(date: initial_date..final_date).order(:date)
+  end
+
   def finished?
     self[:final_volume] != nil
   end

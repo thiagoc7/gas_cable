@@ -11,9 +11,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'jbuilder', '~> 2.0'
-
 gem 'react_webpack_rails'
+gem 'active_model_serializers', '~> 0.10.0.rc4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
