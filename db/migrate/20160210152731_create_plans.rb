@@ -7,7 +7,6 @@ class CreatePlans < ActiveRecord::Migration[5.0]
       t.integer :buy_volume, default: 0
       t.integer :sell_volume, default: 0
       t.integer :final_volume
-      t.boolean :finished, default: false
 
       t.timestamps
     end

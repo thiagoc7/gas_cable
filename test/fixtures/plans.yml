@@ -9,7 +9,7 @@ oliveira:
   final_volume: 13000
 
 outeiro:
-  date: <%= Date.today -1 %>
+  date: <%= Date.today - 1 %>
   tank: outeiro_et
   initial_volume: 5000
   buy_volume: 5000

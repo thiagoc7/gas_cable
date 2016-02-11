@@ -4,11 +4,15 @@ class Plan < ApplicationRecord
   validates_presence_of :date
   validates_uniqueness_of :date, scope: :tank
 
-  before_save :set_initial_volume, :set_finished
+  before_save :set_initial_volume
   after_commit :update_next_plan_initial_volume
 
   def self.at(date, tank)
     where(date: date, tank: tank).first
+  end
+
+  def finished?
+    self[:final_volume] != nil
   end
 
   def final_volume
@@ -23,10 +27,6 @@ class Plan < ApplicationRecord
   def set_initial_volume
     last_plan = Plan.at(self.date - 1, self.tank)
     self.initial_volume = last_plan.final_volume if last_plan
-  end
-
-  def set_finished
-    self.finished = true if self[:final_volume]
   end
 
   def update_next_plan_initial_volume

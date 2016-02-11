@@ -23,9 +23,8 @@ ActiveRecord::Schema.define(version: 20160210152731) do
     t.integer  "buy_volume",     default: 0
     t.integer  "sell_volume",    default: 0
     t.integer  "final_volume"
-    t.boolean  "finished",       default: false
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["tank_id"], name: "index_plans_on_tank_id", using: :btree
   end
 
