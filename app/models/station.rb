@@ -6,7 +6,7 @@ class Station < ApplicationRecord
   validates_uniqueness_of :name
 
   def last_plan_date
-    plans.order('date DESC').limit(1).pluck(:date)[0]
+    plans.order('date DESC').limit(1).pluck(:date)[0] || Date.today - 1
   end
 
   def self.create_all_plans_until(date)

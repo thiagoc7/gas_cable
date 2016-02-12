@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  resources :plans
+  root to: 'plans#index'
   resources :plans, only: [:index, :update]
-  root to: 'tasks#index'
   mount ActionCable.server => '/cable'
 end

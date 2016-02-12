@@ -1,12 +1,16 @@
 class PlansController < ApplicationController
 
   def index
-    initial_date = params[:initial_date].to_date
-    final_date = params[:final_date].to_date
+    initial_date = (params[:initial_date] || Date.today).to_date
+    final_date = (params[:final_date] || Date.today + 1).to_date
 
     Station.create_all_plans_until(final_date)
     @plans = Plan.in_range(initial_date, final_date)
-    render json: @plans
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @plans }
+    end
   end
 
   def update

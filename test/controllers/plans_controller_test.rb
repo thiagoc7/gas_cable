@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PlansControllerTest < ActionDispatch::IntegrationTest
   test 'should get index' do
-    get '/plans', params: { initial_date: Date.today, final_date: Date.today + 2 }
+    get '/plans.json', params: { initial_date: Date.today, final_date: Date.today + 2 }
     assert_response :success
 
     json = JSON.parse(response.body)
