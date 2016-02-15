@@ -1,1 +1,1 @@
-<%= react_component('App', { plans: @plans}) %>
+<%= react_component('App', { plans: @plans.map(&:as_json)}) %>

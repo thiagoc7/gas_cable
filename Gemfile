@@ -12,7 +12,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'react_webpack_rails'
-gem 'active_model_serializers', '~> 0.10.0.rc4'
+gem 'active_model_serializers', '~> 0.9.4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

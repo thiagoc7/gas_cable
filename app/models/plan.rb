@@ -15,6 +15,10 @@ class Plan < ApplicationRecord
     where(date: initial_date..final_date).order(:date)
   end
 
+  def as_json
+    PlanSerializer.new(self).as_json['plan']
+  end
+
   def finished?
     self[:final_volume] != nil
   end
