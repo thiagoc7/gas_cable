@@ -4,7 +4,9 @@ import { Card } from 'elemental';
 const DateCard = ({date, children}) => (
     <Card>
       <h2>{date}</h2>
-      {children}
+      <div style={{display: 'flex'}}>
+        {children}
+      </div>
     </Card>
 );
 
