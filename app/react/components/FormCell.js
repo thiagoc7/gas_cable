@@ -22,6 +22,12 @@ class FormCell extends Component {
     };
   }
 
+  onSubmit() {
+    if (parseInt(this.props.value) !== parseInt(this.state.value)) {
+      this.props.onSubmit(this.state.value)
+    }
+  }
+
   render() {
     const { value, active, style, onSubmit } = this.props;
 
@@ -34,8 +40,8 @@ class FormCell extends Component {
                 style={styles.input}
                 value={this.state.value}
                 onChange={e => this.setState({value: e.target.value})}
-                onBlur={e => onSubmit(this.state.value)}
-                onKeyPress={e => e.charCode == 13 ? onSubmit(this.state.value) : true}
+                onBlur={e => this.onSubmit()}
+                onKeyPress={e => e.charCode == 13 ? this.onSubmit() : true}
             />
           </div>
       )

@@ -6,6 +6,7 @@ class Plan < ApplicationRecord
 
   before_save :set_initial_volume
   after_commit :update_next_plan_initial_volume
+  after_update_commit { PlanBroadcastJob.perform_later self }
 
   def self.at(date, tank)
     where(date: date, tank: tank).first

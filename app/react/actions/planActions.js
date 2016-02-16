@@ -3,7 +3,12 @@ export const setPlans = plans => ({
   plans
 });
 
-export function updatePlan(plan) {
+export const updatePlan = plan => ({
+  type: 'UPDATE_PLAN',
+  plan
+});
+
+export function sendUpdatePlanRequest(plan) {
   return dispatch => {
     return (
         $.ajax({

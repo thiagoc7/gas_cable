@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux'
 import { Card } from 'elemental';
 
-import { updatePlan } from './../../../actions/planActions'
+import { sendUpdatePlanRequest } from './../../../actions/planActions'
 
 import FormCell from './../../../components/FormCell'
 
@@ -28,11 +28,9 @@ const styles = {
 class StationDay extends Component {
 
   onSubmit(id, param, value) {
-    console.log(id, param, parseInt(value))
-
     let plan = {id};
     plan[param] = value;
-    this.props.dispatch(updatePlan(plan))
+    this.props.dispatch(sendUpdatePlanRequest(plan))
   }
 
   render() {
