@@ -1,5 +1,8 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux'
 import { Card } from 'elemental';
+
+import { updatePlan } from './../../../actions/planActions'
 
 import FormCell from './../../../components/FormCell'
 
@@ -24,8 +27,12 @@ const styles = {
 
 class StationDay extends Component {
 
-  onSubmit(id, value) {
-    console.log(id, parseInt(value))
+  onSubmit(id, param, value) {
+    console.log(id, param, parseInt(value))
+
+    let plan = {id};
+    plan[param] = value;
+    this.props.dispatch(updatePlan(plan))
   }
 
   render() {
@@ -48,14 +55,14 @@ class StationDay extends Component {
                       style={styles.cell}
                       value={plan.sell_volume}
                       active={!plan.finished}
-                      onSubmit={this.onSubmit.bind(null, plan.id)}
+                      onSubmit={value => this.onSubmit(plan.id, 'sell_volume', value)}
                   />
 
                   <FormCell
                       style={styles.cell}
                       value={plan.buy_volume}
                       active={true}
-                      onSubmit={this.onSubmit.bind(null, plan.id)}
+                      onSubmit={value => this.onSubmit(plan.id, 'buy_volume', value)}
                   />
 
                   <div style={styles.cell}>{plan.final_volume}</div>
@@ -73,4 +80,4 @@ StationDay.propTypes = {
   plans: PropTypes.array.isRequired
 };
 
-export default StationDay;
+export default connect()(StationDay);

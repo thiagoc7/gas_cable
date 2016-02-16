@@ -43,7 +43,7 @@ const getValuesFromKey = (key, arr) => {
 const mapStateToProps = (state) => {
   console.log(state);
   return {
-    plans: state.plans
+    plans: state.plans.items
   }
 };
 
