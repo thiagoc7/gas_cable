@@ -37,12 +37,12 @@ Plans.propTypes = {
 
 const getValuesFromKey = (key, arr) => {
   const items = arr.map(item => item[key]);
-  return [...new Set(items)]
+  return [...new Set(items)].sort((item1, item2) => item1 > item2)
 };
 
 const mapStateToProps = (state) => {
   return {
-    plans: state.plans.items.filter(plan => plan.date >= state.plans.initialDate && plan.date <= state.plans.finalDate)
+    plans: state.plans.items
   }
 };
 

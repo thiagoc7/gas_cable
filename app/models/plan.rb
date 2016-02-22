@@ -5,6 +5,7 @@ class Plan < ApplicationRecord
   validates_uniqueness_of :date, scope: :tank
 
   before_save :set_initial_volume
+  before_validation :set_defaults
   after_commit :update_next_plan_initial_volume
   after_update_commit { PlanBroadcastJob.perform_later self }
 
@@ -41,5 +42,10 @@ class Plan < ApplicationRecord
   def update_next_plan_initial_volume
     next_plan = Plan.at(self.date + 1, self.tank)
     next_plan.save! if next_plan
+  end
+
+  def set_defaults
+    self.buy_volume ||= 0
+    self.sell_volume ||= 0
   end
 end
