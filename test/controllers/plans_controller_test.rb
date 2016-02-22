@@ -6,7 +6,7 @@ class PlansControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     json = JSON.parse(response.body)
-    assert_equal json.length, 6
+    assert_equal json['plans'].length, 6
   end
 
   test 'should update plan' do

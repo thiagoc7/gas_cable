@@ -24,6 +24,7 @@
 app/assets/javascripts/react_bundle.js
 
 .idea
+app/react/.idea
 node_modules
 
 coverage

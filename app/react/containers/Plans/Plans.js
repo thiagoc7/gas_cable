@@ -42,7 +42,7 @@ const getValuesFromKey = (key, arr) => {
 
 const mapStateToProps = (state) => {
   return {
-    plans: state.plans.items
+    plans: state.plans.items.filter(plan => plan.date >= state.plans.initialDate && plan.date <= state.plans.finalDate)
   }
 };
 

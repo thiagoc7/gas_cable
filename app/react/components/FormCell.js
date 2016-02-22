@@ -22,6 +22,10 @@ class FormCell extends Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({value: nextProps.value});
+  }
+
   onSubmit() {
     if (parseInt(this.props.value) !== parseInt(this.state.value)) {
       this.props.onSubmit(this.state.value)

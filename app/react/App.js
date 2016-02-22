@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import moment from 'moment';
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk';
@@ -13,8 +14,8 @@ export default class App extends Component {
   render() {
     const initialState = {
       plans: {
-        isFetching: false,
-        didInvalidate: false,
+        initialDate: moment().format('YYYY-MM-DD'),
+        finalDate: moment().add(1, 'day').format('YYYY-MM-DD'),
         items: this.props.plans
       }
     };

@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux'
-import { Card } from 'elemental';
 
 import { sendUpdatePlanRequest } from './../../../actions/planActions'
 
 import FormCell from './../../../components/FormCell'
+import MeasureCell from './../../../components/MeasureCell'
 
 const tableLabels = [
   '-',
@@ -44,10 +44,16 @@ class StationDay extends Component {
               {tableLabels.map(label => <div style={styles.cell} key={label}>{label}</div>)}
             </div>
 
-            {this.props.plans.map(plan => (
+            {plans.map(plan => (
                 <div style={{display: 'flex', flexDirection: 'column'}} key={plan.id}>
+
                   <div style={styles.cell}>{plan.gasoline}</div>
-                  <div style={styles.cell}>{plan.initial_volume}</div>
+
+                  <MeasureCell
+                      style={styles.cell}
+                      value={plan.initial_volume}
+                      isRed={plan.above_max}
+                  />
 
                   <FormCell
                       style={styles.cell}
@@ -63,7 +69,11 @@ class StationDay extends Component {
                       onSubmit={value => this.onSubmit(plan.id, 'buy_volume', value)}
                   />
 
-                  <div style={styles.cell}>{plan.final_volume}</div>
+                  <MeasureCell
+                      style={styles.cell}
+                      value={plan.final_volume}
+                      isRed={plan.below_min}
+                  />
                 </div>
             ))}
 

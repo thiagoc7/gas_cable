@@ -8,8 +8,4 @@ class Station < ApplicationRecord
   def last_plan_date
     plans.order('date DESC').limit(1).pluck(:date)[0] || Date.today - 1
   end
-
-  def self.create_all_plans_until(date)
-    PlanCreator.new(date).create!
-  end
 end
